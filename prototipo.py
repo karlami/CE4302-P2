@@ -1,11 +1,11 @@
 import numpy as np
 from PIL import Image
 
-matrix = np.full((640,480),255,dtype=np.uint8)
+matrix = np.full((480,640),255,dtype=np.uint8)
 def DibujarPixel(x, y, color):
     matrix[x][y] = color
 
-def LineaBresenham(x1, y1, x2, y2):
+def LineaBresenham(y1, x1, y2, x2):
       #0 - Distancias que se desplazan en cada eje
       dY = (y2 - y1)
       dX = (x2 - x1)
@@ -45,8 +45,8 @@ def LineaBresenham(x1, y1, x2, y2):
       avI = (av - dX)
     
       # 4  - Bucle para el trazado de las línea.
-      while x != x2 and y != y2:
-          DibujarPixel(x, y, 0) # Como mínimo se dibujará siempre 1 píxel (punto).
+      while x != x2 or y != y2:
+          DibujarPixel(x, y, 4) # Como mínimo se dibujará siempre 1 píxel (punto).
           print(str(av) + " ") # (debug) para ver los valores de error global que van apareciendo.
           if (av >= 0):
               x = (x + IncXi)     # X aumenta en inclinado.
@@ -59,7 +59,8 @@ def LineaBresenham(x1, y1, x2, y2):
 
 def main():
     # Tu código principal va aquí
-    LineaBresenham(200,200,640,480)
+    LineaBresenham(300, 75, 340, 75)        
+
     # Nombre del archivo en el que deseas guardar la matriz
     nombre_archivo = "matriz.txt"
 
@@ -72,6 +73,7 @@ def main():
     # Guardar la imagen en un archivo PNG
     nombre_archivo = "matriz.png"
     img.save(nombre_archivo)
+    img.show()
 
-if __name__ == "_main_":
+if __name__ == "__main__":
     main()
