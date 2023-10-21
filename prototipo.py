@@ -58,8 +58,16 @@ def LineaBresenham(y1, x1, y2, x2):
               av = (av + avR)     # Avance Recto
 
 def main():
-    LineaBresenham(300, 75, 340, 75)        
-
+    LineaBresenham(320, 50, 380, 245)
+    LineaBresenham(380, 245, 590, 250)
+    LineaBresenham(590, 250, 400, 350)
+    LineaBresenham(400, 350, 500, 420)
+    LineaBresenham(500, 420, 320, 340)
+    LineaBresenham(320, 340, 140, 420)
+    LineaBresenham(140, 420, 260, 350)
+    LineaBresenham(260, 350, 50, 250)
+    LineaBresenham(50, 250, 280, 245)
+    LineaBresenham(280, 245, 320, 50)
     # Nombre del archivo en el que deseas guardar la matriz
     nombre_archivo = "matriz.txt"
 
