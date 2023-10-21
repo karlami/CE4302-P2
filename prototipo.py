@@ -58,7 +58,6 @@ def LineaBresenham(y1, x1, y2, x2):
               av = (av + avR)     # Avance Recto
 
 def main():
-    # Tu código principal va aquí
     LineaBresenham(300, 75, 340, 75)        
 
     # Nombre del archivo en el que deseas guardar la matriz
