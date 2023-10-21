@@ -73,5 +73,5 @@ def main():
     nombre_archivo = "matriz.png"
     img.save(nombre_archivo)
 
-if _name_ == "_main_":
+if __name__ == "_main_":
     main()
