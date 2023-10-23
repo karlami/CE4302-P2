@@ -9,10 +9,10 @@ def bezier_cubic(p0, p1, p2, p3, x_values, y_values):
         y = (1 - t)**3 * p0[1] + 3 * (1 - t)**2 * t * p1[1] + 3 * (1 - t) * t**2 * p2[1] + t**3 * p3[1]
         x1 = (1 - (t+1/99))**3 * p0[0] + 3 * (1 - (t+1/99))**2 * (t+1/99) * p1[0] + 3 * (1 - (t+1/99)) * (t+1/99)**2 * p2[0] + (t+1/99)**3 * p3[0]
         y1 = (1 - (t+1/99))**3 * p0[1] + 3 * (1 - (t+1/99))**2 * (t+1/99) * p1[1] + 3 * (1 - (t+1/99)) * (t+1/99)**2 * p2[1] + (t+1/99)**3 * p3[1]
-    x_values.append(x)
-    y_values.append(y)
-    x_values.append(x1)
-    y_values.append(y1)
+        x_values.append(x)
+        y_values.append(y)
+        x_values.append(x1)
+        y_values.append(y1)
 
 # Dimensiones de la imagen
 width, height = 640, 480
