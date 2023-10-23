@@ -2,17 +2,20 @@ import matplotlib.pyplot as plt
 import numpy as np
 import cv2
 
-# Función para calcular un punto en la curva Bézier cúbica y guardar los valores
+# Función para calcular dos pares de (x, y) en la curva Bézier cúbica y guardar los valores
 def bezier_cubic(p0, p1, p2, p3, x_values, y_values):
-    for t in range(0, 100, 2(1/99)):
+    for i in range(0, 101):  # Usamos 101 para incluir el valor final 1.0
+        t = i / 100.0  # Calculamos t en el rango de 0 a 1
+        t1 = (i + 1) / 100.0  # Calculamos el siguiente valor de t
         x = (1 - t)**3 * p0[0] + 3 * (1 - t)**2 * t * p1[0] + 3 * (1 - t) * t**2 * p2[0] + t**3 * p3[0]
         y = (1 - t)**3 * p0[1] + 3 * (1 - t)**2 * t * p1[1] + 3 * (1 - t) * t**2 * p2[1] + t**3 * p3[1]
-        x1 = (1 - (t+1/99))**3 * p0[0] + 3 * (1 - (t+1/99))**2 * (t+1/99) * p1[0] + 3 * (1 - (t+1/99)) * (t+1/99)**2 * p2[0] + (t+1/99)**3 * p3[0]
-        y1 = (1 - (t+1/99))**3 * p0[1] + 3 * (1 - (t+1/99))**2 * (t+1/99) * p1[1] + 3 * (1 - (t+1/99)) * (t+1/99)**2 * p2[1] + (t+1/99)**3 * p3[1]
+        x1 = (1 - t1)**3 * p0[0] + 3 * (1 - t1)**2 * t1 * p1[0] + 3 * (1 - t1) * t1**2 * p2[0] + t1**3 * p3[0]
+        y1 = (1 - t1)**3 * p0[1] + 3 * (1 - t1)**2 * t1 * p1[1] + 3 * (1 - t1) * t1**2 * p2[1] + t1**3 * p3[1]
         x_values.append(x)
         y_values.append(y)
         x_values.append(x1)
         y_values.append(y1)
+
 
 # Dimensiones de la imagen
 width, height = 640, 480
