@@ -16,7 +16,6 @@ def bezier_cubic(p0, p1, p2, p3, x_values, y_values):
         x_values.append(x1)
         y_values.append(y1)
 
-
 # Dimensiones de la imagen
 width, height = 640, 480
 
@@ -34,6 +33,9 @@ t_values = np.linspace(0, 1, 100)
 x_values = []
 y_values = []
 
+# Calcular las coordenadas (x, y) en la curva Bezier cúbica
+bezier_cubic(p0, p1, p2, p3, x_values, y_values)
+
 # Dibujar la curva Bezier en la imagen
 for x, y in zip(x_values, y_values):
     image[int(y), int(x)] = (255, 255, 255)
@@ -42,3 +44,4 @@ for x, y in zip(x_values, y_values):
 cv2.imshow('Bezier Curve', image)
 cv2.waitKey(0)
 cv2.destroyAllWindows()
+
