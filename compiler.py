@@ -40,7 +40,7 @@ op_codes = {
         'g6_str': '1101'
     }
 }
-
+# registros vectoriales
 registers = {
     'r0': '0000',
     'r1': '0001',
@@ -105,7 +105,7 @@ def get_immediate_operand(operand, width):
         raise Exception(str(error))
 
 
-def arith_logic_instruction(op_code_key, op_code, operands):
+def arith_scalar_instruction(op_code_key, op_code, operands):
     if (op_code_key == 'g6_cmp'):
         operand_1 = get_register_operand(operands[0])
         operand_2 = get_register_operand(operands[1])
@@ -153,13 +153,15 @@ def decode_instruction(op_code_key, operands, current_pc, labels):
     try:
         inst_type, op_code = get_op_code(op_code_key)
 
-        if (inst_type == 'arithmetic' or inst_type == 'logical'):
+        if (inst_type == 'arithmetic'):
+            return arith_logic_instruction(op_code_key, op_code, operands)
+        elif (inst_type == 'arithmetic_vectorial'):
             return arith_logic_instruction(op_code_key, op_code, operands)
         elif (inst_type == 'mov'):
             return mov_instruction(op_code_key, op_code, operands)
         elif (inst_type == 'branch'):
             return branch_instruction(op_code, operands, current_pc, labels)
-        elif (inst_type == 'memory'):
+        elif (inst_type == 'control'):
             return memory_instruction(op_code, operands)
     except Exception as error:
         raise Exception(str(error))
